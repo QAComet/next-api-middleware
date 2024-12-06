@@ -10,6 +10,7 @@ export default defineConfig({
     coverage: {
       enabled: true,
       clean: true,
+      cleanOnRerun: true,
       include: ["src/**"],
     },
   },

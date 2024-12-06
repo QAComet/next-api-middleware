@@ -30,9 +30,10 @@
   "scripts": {
     "build": "tsup",
     "type-check": "tsc --pretty --noEmit",
-    "test": "vitest",
+    "test": "vitest --run",
     "version": "npm test && npm build",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
@@ -41,6 +42,7 @@
     "@vitejs/plugin-react": "^4.3.3",
     "@vitest/coverage-v8": "^2.1.8",
     "@vitest/ui": "^2.1.8",
+    "husky": "^9.1.7",
     "next": "^14.0.0",
     "tsup": "^6.5.0",
     "typedoc": "^0.27.3",

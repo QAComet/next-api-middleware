@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - canary
+      - main
   pull_request:
 
 jobs:
@@ -21,7 +22,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Check Types
         run: npm run type-check
@@ -42,14 +46,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Test
         run: npm run test
 
-      - name: Upload Code Coverage Results
-        uses: codecov/codecov-action@v3
+      - name: Upload code coverage
+        uses: actions/upload-artifact@v4
+        if: matrix.node == '21'
         with:
-          file: ./coverage/coverage-final.json
-          fail_ci_if_error: true
-          verbose: true
+          name: coverage
+          path: ./coverage
