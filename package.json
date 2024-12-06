@@ -1,0 +1,57 @@
+{
+  "name": "@qacomet/next-api-middleware",
+  "version": "0.0.1",
+  "description": "Provides middleware functionality for Next.js app router API routes",
+  "author": "Lucas Simon <lucas@qacomet.com>",
+  "repository": "qacomet/next-api-middleware",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "keywords": [
+    "next",
+    "next.js",
+    "middleware",
+    "API routes",
+    "app router"
+  ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "type-check": "tsc --pretty --noEmit",
+    "test": "vitest",
+    "version": "npm test && npm build",
+    "docs": "typedoc"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.1",
+    "@types/lodash.kebabcase": "^4.1.9",
+    "@types/node": "^18.17.19",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/coverage-v8": "^2.1.8",
+    "@vitest/ui": "^2.1.8",
+    "next": "^14.0.0",
+    "ts-node": "^10.9.2",
+    "tsup": "^6.5.0",
+    "typedoc": "^0.27.3",
+    "typedoc-plugin-markdown": "^4.3.1",
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.2",
+    "vitest": "^2.1.5"
+  },
+  "peerDependencies": {
+    "next": ">=14"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "plugin": ["typedoc-plugin-markdown"],
+  "entryPoints": ["src/**/*.ts"],
+  "exclude": ["**/*+(index|.spec|.e2e).ts"],
+  "outputs": [
+    {
+      "name": "markdown",
+      "path": "./docs/md"
+    },
+    {
+      "name": "html",
+      "path": "./docs/html"
+    }
+  ]
+}
