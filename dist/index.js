@@ -8,6 +8,14 @@ var __publicField = (obj, key, value) => {
 
 // src/route-builder.ts
 var RouteBuilder = class {
+  /**
+  * Note: it's not recommended to use this constructor directly, instead it's
+  * recommended to use the
+  * `RouteMiddleware.from(...middleware).routes(routes)` interface to
+  * construct a `RouteBuilder` object.
+  * @param middleware list of middleware using the internal middleware config
+  * @param routes object containing the route handlers
+  */
   constructor(middleware, routes) {
     __publicField(this, "_middleware", []);
     __publicField(this, "_excludeList", []);
@@ -124,6 +132,13 @@ var DEFAULT_HTTP_METHODS = [
 
 // src/route-middleware.ts
 var RouteMiddleware = class {
+  /**
+  * Note: it's not recommended to use this constructor yourself, instead call
+  * `RouteMiddleware.from` so that it can set the default values required in
+  * the middleware config objects.
+  * @param middleware list of middleware configs using the internal
+  * middleware config interface
+  */
   constructor(middleware) {
     __publicField(this, "middleware");
     this.middleware = middleware;
@@ -131,7 +146,8 @@ var RouteMiddleware = class {
   /**
   * Constructs a RouteMiddleware instance from an array of middleware config
   * objects and middleware functions.
-  * @param middleware list of middleware functions and middleware config objects
+  * @param middleware list of middleware functions and middleware config
+  * objects
   */
   static from(...middleware) {
     const parsedMiddleware = middleware.map((m) => {
@@ -181,7 +197,14 @@ var RouteMiddleware = class {
   */
   routes(routes) {
     if (routes.hasOwnProperty("prototype")) {
-      routes = new routes();
+      const routeHandlersInstance = new routes();
+      const routeHandlers = {};
+      for (let method of DEFAULT_HTTP_METHODS) {
+        if (routeHandlersInstance[method]) {
+          routeHandlers[method] = routeHandlersInstance[method];
+        }
+      }
+      routes = routeHandlers;
     }
     return RouteBuilder.from(this.middleware, routes);
   }

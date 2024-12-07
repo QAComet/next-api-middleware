@@ -1,22 +1,24 @@
 import * as next_server from 'next/server';
-import { NextRequest } from 'next/server';
 
 /**
- * Represents the context passed into an app API route by Next.js
+ * Represents the context passed into an app API route by Next.js since we
+ * cannot import `AppRouteRouteHandlerContext` from next.js
  */
 type NextRouteHandlerContext = {
-    params: {
-        [key: string]: string;
-    };
+    params: Promise<undefined | Record<string, string | string[] | undefined>>;
 };
 /**
  * Represents an app API route handlers for Next.js
  */
-type NextRouteHandler = (request?: NextRequest, context?: NextRouteHandlerContext) => Promise<next_server.NextResponse<unknown>>;
+type NextRouteHandler = ((request: next_server.NextRequest, context: NextRouteHandlerContext) => Promise<next_server.NextResponse<unknown>>) | ((request: next_server.NextRequest) => Promise<next_server.NextResponse<unknown>>) | (() => Promise<next_server.NextResponse<unknown>>);
+/**
+ * Describes the shape of the next function passed into middleware functions.
+ */
+type MiddlewareNextFunction = () => Promise<next_server.NextResponse<unknown>>;
 /**
  * Describes the shape of middleware functions ingested by this library.
  */
-type MiddlewareFunction = (request: NextRequest, next: () => Promise<next_server.NextResponse<unknown>>, context?: NextRouteHandlerContext, handler?: NextRouteHandler) => Promise<next_server.NextResponse<unknown>>;
+type MiddlewareFunction = (request: next_server.NextRequest, next: MiddlewareNextFunction, context?: NextRouteHandlerContext, handler?: NextRouteHandler) => Promise<next_server.NextResponse<unknown>>;
 /**
  * Supported HTTP methods for Next.js route handlers
  */
@@ -86,6 +88,14 @@ declare class RouteBuilder {
     _excludeList: string[];
     _includeList: string[];
     _routes: NextRouteHandlers;
+    /**
+     * Note: it's not recommended to use this constructor directly, instead it's
+     * recommended to use the
+     * `RouteMiddleware.from(...middleware).routes(routes)` interface to
+     * construct a `RouteBuilder` object.
+     * @param middleware list of middleware using the internal middleware config
+     * @param routes object containing the route handlers
+     */
     constructor(middleware: BuilderMiddlewareConfig[], routes: NextRouteHandlers);
     /**
      * Constructs in instance of RouteBuilder with the configured middleware and routes.
@@ -216,11 +226,19 @@ declare class RouteBuilder {
  */
 declare class RouteMiddleware {
     middleware: BuilderMiddlewareConfig[];
+    /**
+     * Note: it's not recommended to use this constructor yourself, instead call
+     * `RouteMiddleware.from` so that it can set the default values required in
+     * the middleware config objects.
+     * @param middleware list of middleware configs using the internal
+     * middleware config interface
+     */
     constructor(middleware: BuilderMiddlewareConfig[]);
     /**
      * Constructs a RouteMiddleware instance from an array of middleware config
      * objects and middleware functions.
-     * @param middleware list of middleware functions and middleware config objects
+     * @param middleware list of middleware functions and middleware config
+     * objects
      */
     static from(...middleware: Middleware[]): RouteMiddleware;
     /**
@@ -244,4 +262,4 @@ declare class RouteMiddleware {
     routes(routes: NextRouteHandlers | NextRouteHandlersClass): RouteBuilder;
 }
 
-export { BuilderMiddlewareConfig, HttpMethod, HttpMethods, Middleware, MiddlewareConfig, MiddlewareFunction, NextRouteHandler, NextRouteHandlerContext, NextRouteHandlers, NextRouteHandlersClass, RouteBuilder, RouteMiddleware };
+export { BuilderMiddlewareConfig, HttpMethod, HttpMethods, Middleware, MiddlewareConfig, MiddlewareFunction, MiddlewareNextFunction, NextRouteHandler, NextRouteHandlerContext, NextRouteHandlers, NextRouteHandlersClass, RouteBuilder, RouteMiddleware };

@@ -12,4 +12,4 @@ Supported HTTP methods for Next.js route handlers
 
 ## Defined in
 
-[types.ts:29](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/types.ts#L29)
+[types.ts:42](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/types.ts#L42)

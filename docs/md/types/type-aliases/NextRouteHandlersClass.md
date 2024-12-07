@@ -17,4 +17,4 @@ interface.
 
 ## Defined in
 
-[types.ts:94](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/types.ts#L94)
+[types.ts:107](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/types.ts#L107)

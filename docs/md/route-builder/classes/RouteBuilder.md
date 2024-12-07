@@ -23,15 +23,24 @@ class yourself and instead depend on `RouteMiddleware` instead.
 
 > **new RouteBuilder**(`middleware`, `routes`): [`RouteBuilder`](RouteBuilder.md)
 
+Note: it's not recommended to use this constructor directly, instead it's
+recommended to use the
+`RouteMiddleware.from(...middleware).routes(routes)` interface to
+construct a `RouteBuilder` object.
+
 #### Parameters
 
 ##### middleware
 
 [`BuilderMiddlewareConfig`](../../types/type-aliases/BuilderMiddlewareConfig.md)[]
 
+list of middleware using the internal middleware config
+
 ##### routes
 
 [`NextRouteHandlers`](../../types/interfaces/NextRouteHandlers.md)
+
+object containing the route handlers
 
 #### Returns
 
@@ -39,7 +48,7 @@ class yourself and instead depend on `RouteMiddleware` instead.
 
 #### Defined in
 
-[route-builder.ts:28](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L28)
+[route-builder.ts:36](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L36)
 
 ## Properties
 
@@ -49,7 +58,7 @@ class yourself and instead depend on `RouteMiddleware` instead.
 
 #### Defined in
 
-[route-builder.ts:24](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L24)
+[route-builder.ts:24](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L24)
 
 ***
 
@@ -59,7 +68,7 @@ class yourself and instead depend on `RouteMiddleware` instead.
 
 #### Defined in
 
-[route-builder.ts:25](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L25)
+[route-builder.ts:25](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L25)
 
 ***
 
@@ -69,7 +78,7 @@ class yourself and instead depend on `RouteMiddleware` instead.
 
 #### Defined in
 
-[route-builder.ts:23](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L23)
+[route-builder.ts:23](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L23)
 
 ***
 
@@ -79,7 +88,7 @@ class yourself and instead depend on `RouteMiddleware` instead.
 
 #### Defined in
 
-[route-builder.ts:26](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L26)
+[route-builder.ts:26](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L26)
 
 ## Methods
 
@@ -110,7 +119,7 @@ API handler being wrapped
 
 #### Defined in
 
-[route-builder.ts:126](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L126)
+[route-builder.ts:134](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L134)
 
 ***
 
@@ -135,7 +144,7 @@ HTTP method for the handler the middleware is wrapping
 
 #### Defined in
 
-[route-builder.ts:100](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L100)
+[route-builder.ts:108](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L108)
 
 ***
 
@@ -168,7 +177,7 @@ handlers implementing the associated API functionality.
 
 #### Defined in
 
-[route-builder.ts:61](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L61)
+[route-builder.ts:69](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L69)
 
 ***
 
@@ -194,7 +203,7 @@ being built
 
 #### Defined in
 
-[route-builder.ts:90](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L90)
+[route-builder.ts:98](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L98)
 
 ***
 
@@ -220,7 +229,7 @@ the routes
 
 #### Defined in
 
-[route-builder.ts:79](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L79)
+[route-builder.ts:87](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L87)
 
 ***
 
@@ -250,4 +259,4 @@ list of routes this RouteBuilder instance will use
 
 #### Defined in
 
-[route-builder.ts:41](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-builder.ts#L41)
+[route-builder.ts:49](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-builder.ts#L49)

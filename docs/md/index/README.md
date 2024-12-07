@@ -44,6 +44,12 @@ Re-exports [MiddlewareFunction](../types/type-aliases/MiddlewareFunction.md)
 
 ***
 
+### MiddlewareNextFunction
+
+Re-exports [MiddlewareNextFunction](../types/type-aliases/MiddlewareNextFunction.md)
+
+***
+
 ### NextRouteHandler
 
 Re-exports [NextRouteHandler](../types/type-aliases/NextRouteHandler.md)

@@ -8,18 +8,15 @@
 
 > **NextRouteHandlerContext**: `object`
 
-Represents the context passed into an app API route by Next.js
+Represents the context passed into an app API route by Next.js since we
+cannot import `AppRouteRouteHandlerContext` from next.js
 
 ## Type declaration
 
 ### params
 
-> **params**: `object`
-
-#### Index Signature
-
- \[`key`: `string`\]: `string`
+> **params**: `Promise`\<`undefined` \| `Record`\<`string`, `string` \| `string`[] \| `undefined`\>\>
 
 ## Defined in
 
-[types.ts:6](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/types.ts#L6)
+[types.ts:5](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/types.ts#L5)

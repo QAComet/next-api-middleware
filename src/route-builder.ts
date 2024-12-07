@@ -25,6 +25,14 @@ export class RouteBuilder {
   _includeList = [] as string[];
   _routes: NextRouteHandlers;
 
+  /**
+   * Note: it's not recommended to use this constructor directly, instead it's
+   * recommended to use the
+   * `RouteMiddleware.from(...middleware).routes(routes)` interface to
+   * construct a `RouteBuilder` object.
+   * @param middleware list of middleware using the internal middleware config
+   * @param routes object containing the route handlers
+   */
   constructor(
     middleware: BuilderMiddlewareConfig[],
     routes: NextRouteHandlers
@@ -128,7 +136,7 @@ export class RouteBuilder {
     const wrapper = async (
       i: number,
       request: NextRequest,
-      context?: NextRouteHandlerContext
+      context: NextRouteHandlerContext
     ) => {
       if (i === middleware.length) {
         return await handler(request, context);
@@ -138,7 +146,7 @@ export class RouteBuilder {
       };
       return middleware[i].function(request, nextFunction, context, handler);
     };
-    return (async (request: NextRequest, context?: NextRouteHandlerContext) => {
+    return (async (request: NextRequest, context: NextRouteHandlerContext) => {
       return wrapper(0, request, context);
     }) as NextRouteHandler;
   }

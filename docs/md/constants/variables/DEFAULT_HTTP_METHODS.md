@@ -12,4 +12,4 @@ Default HTTP methods supported by Next.js
 
 ## Defined in
 
-[constants.ts:6](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/constants.ts#L6)
+[constants.ts:6](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/constants.ts#L6)

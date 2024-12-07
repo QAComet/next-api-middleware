@@ -1,24 +1,37 @@
-import { NextRequest } from "next/server";
-
 /**
- * Represents the context passed into an app API route by Next.js
+ * Represents the context passed into an app API route by Next.js since we
+ * cannot import `AppRouteRouteHandlerContext` from next.js
  */
-export type NextRouteHandlerContext = { params: { [key: string]: string } };
+export type NextRouteHandlerContext = {
+  params: Promise<undefined | Record<string, string | string[] | undefined>>;
+};
 
 /**
  * Represents an app API route handlers for Next.js
  */
-export type NextRouteHandler = (
-  request?: NextRequest,
-  context?: NextRouteHandlerContext
-) => Promise<import("next/server").NextResponse<unknown>>;
+export type NextRouteHandler =
+  | ((
+      request: import("next/server").NextRequest,
+      context: NextRouteHandlerContext
+    ) => Promise<import("next/server").NextResponse<unknown>>)
+  | ((
+      request: import("next/server").NextRequest
+    ) => Promise<import("next/server").NextResponse<unknown>>)
+  | (() => Promise<import("next/server").NextResponse<unknown>>);
+
+/**
+ * Describes the shape of the next function passed into middleware functions.
+ */
+export type MiddlewareNextFunction = () => Promise<
+  import("next/server").NextResponse<unknown>
+>;
 
 /**
  * Describes the shape of middleware functions ingested by this library.
  */
 export type MiddlewareFunction = (
-  request: NextRequest,
-  next: () => Promise<import("next/server").NextResponse<unknown>>,
+  request: import("next/server").NextRequest,
+  next: MiddlewareNextFunction,
   context?: NextRouteHandlerContext,
   handler?: NextRouteHandler
 ) => Promise<import("next/server").NextResponse<unknown>>;

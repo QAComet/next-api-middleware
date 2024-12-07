@@ -20,6 +20,7 @@
 - [HttpMethods](type-aliases/HttpMethods.md)
 - [Middleware](type-aliases/Middleware.md)
 - [MiddlewareFunction](type-aliases/MiddlewareFunction.md)
+- [MiddlewareNextFunction](type-aliases/MiddlewareNextFunction.md)
 - [NextRouteHandler](type-aliases/NextRouteHandler.md)
 - [NextRouteHandlerContext](type-aliases/NextRouteHandlerContext.md)
 - [NextRouteHandlersClass](type-aliases/NextRouteHandlersClass.md)

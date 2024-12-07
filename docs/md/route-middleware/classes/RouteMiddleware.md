@@ -86,11 +86,18 @@ export const { POST, PUT, DELETE } = middleware.routes({
 
 > **new RouteMiddleware**(`middleware`): [`RouteMiddleware`](RouteMiddleware.md)
 
+Note: it's not recommended to use this constructor yourself, instead call
+`RouteMiddleware.from` so that it can set the default values required in
+the middleware config objects.
+
 #### Parameters
 
 ##### middleware
 
 [`BuilderMiddlewareConfig`](../../types/type-aliases/BuilderMiddlewareConfig.md)[]
+
+list of middleware configs using the internal
+middleware config interface
 
 #### Returns
 
@@ -98,7 +105,7 @@ export const { POST, PUT, DELETE } = middleware.routes({
 
 #### Defined in
 
-[route-middleware.ts:89](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-middleware.ts#L89)
+[route-middleware.ts:96](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-middleware.ts#L96)
 
 ## Properties
 
@@ -108,7 +115,7 @@ export const { POST, PUT, DELETE } = middleware.routes({
 
 #### Defined in
 
-[route-middleware.ts:87](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-middleware.ts#L87)
+[route-middleware.ts:87](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-middleware.ts#L87)
 
 ## Methods
 
@@ -131,7 +138,7 @@ the current list of middleware
 
 #### Defined in
 
-[route-middleware.ts:134](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-middleware.ts#L134)
+[route-middleware.ts:142](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-middleware.ts#L142)
 
 ***
 
@@ -157,7 +164,7 @@ will wrap
 
 #### Defined in
 
-[route-middleware.ts:147](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-middleware.ts#L147)
+[route-middleware.ts:155](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-middleware.ts#L155)
 
 ***
 
@@ -174,7 +181,8 @@ objects and middleware functions.
 
 ...[`Middleware`](../../types/type-aliases/Middleware.md)[]
 
-list of middleware functions and middleware config objects
+list of middleware functions and middleware config
+objects
 
 #### Returns
 
@@ -182,7 +190,7 @@ list of middleware functions and middleware config objects
 
 #### Defined in
 
-[route-middleware.ts:98](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-middleware.ts#L98)
+[route-middleware.ts:106](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-middleware.ts#L106)
 
 ***
 
@@ -205,4 +213,4 @@ concatenation.
 
 #### Defined in
 
-[route-middleware.ts:125](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/route-middleware.ts#L125)
+[route-middleware.ts:133](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/route-middleware.ts#L133)

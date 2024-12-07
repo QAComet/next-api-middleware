@@ -24,4 +24,4 @@
 
 ## Defined in
 
-[test/utils.ts:4](https://github.com/QAComet/next-api-middleware/blob/3366b8d2adaafc4e5dd18b77dbaa4989c3681903/src/test/utils.ts#L4)
+[test/utils.ts:4](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/test/utils.ts#L4)

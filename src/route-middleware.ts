@@ -86,6 +86,13 @@ import { RouteBuilder } from "./route-builder";
 export class RouteMiddleware {
   middleware: BuilderMiddlewareConfig[];
 
+  /**
+   * Note: it's not recommended to use this constructor yourself, instead call
+   * `RouteMiddleware.from` so that it can set the default values required in
+   * the middleware config objects.
+   * @param middleware list of middleware configs using the internal
+   * middleware config interface
+   */
   constructor(middleware: BuilderMiddlewareConfig[]) {
     this.middleware = middleware;
   }
@@ -93,7 +100,8 @@ export class RouteMiddleware {
   /**
    * Constructs a RouteMiddleware instance from an array of middleware config
    * objects and middleware functions.
-   * @param middleware list of middleware functions and middleware config objects
+   * @param middleware list of middleware functions and middleware config
+   * objects
    */
   static from(...middleware: Middleware[]) {
     const parsedMiddleware = middleware.map((m) => {
@@ -145,40 +153,17 @@ export class RouteMiddleware {
    * will wrap
    */
   routes(routes: NextRouteHandlers | NextRouteHandlersClass) {
+    // for if a class is used
     if (routes.hasOwnProperty("prototype")) {
-      // @ts-ignore
-      routes = new routes();
+      const routeHandlersInstance = new (routes as NextRouteHandlersClass)();
+      const routeHandlers = {} as NextRouteHandlers;
+      for (let method of DEFAULT_HTTP_METHODS) {
+        if (routeHandlersInstance[method]) {
+          routeHandlers[method] = routeHandlersInstance[method];
+        }
+      }
+      routes = routeHandlers;
     }
     return RouteBuilder.from(this.middleware, routes as NextRouteHandlers);
   }
 }
-
-/*
-class MyRoutes implements NextRouteHandlers {
-  async GET() {
-    return new NextResponse("");
-  }
-}
-
-RouteMiddleware.register(
-  {
-    methods: ["GET", "POST", "PUT", "PUT"],
-    middleware: async () => {
-      return new NextResponse("");
-    },
-  },
-  {
-    middleware: async () => {
-      return new NextResponse("");
-    },
-    methods: ["POST"],
-  }
-)
-  .routes({
-    GET: async function () {
-      return new NextResponse("");
-    },
-  })
-  .routes(MyRoutes)
-  .build();
-  */
