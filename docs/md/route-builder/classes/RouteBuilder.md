@@ -48,7 +48,7 @@ object containing the route handlers
 
 #### Defined in
 
-[route-builder.ts:36](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L36)
+[route-builder.ts:36](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L36)
 
 ## Properties
 
@@ -58,7 +58,7 @@ object containing the route handlers
 
 #### Defined in
 
-[route-builder.ts:24](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L24)
+[route-builder.ts:24](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L24)
 
 ***
 
@@ -68,7 +68,7 @@ object containing the route handlers
 
 #### Defined in
 
-[route-builder.ts:25](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L25)
+[route-builder.ts:25](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L25)
 
 ***
 
@@ -78,7 +78,7 @@ object containing the route handlers
 
 #### Defined in
 
-[route-builder.ts:23](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L23)
+[route-builder.ts:23](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L23)
 
 ***
 
@@ -88,7 +88,7 @@ object containing the route handlers
 
 #### Defined in
 
-[route-builder.ts:26](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L26)
+[route-builder.ts:26](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L26)
 
 ## Methods
 
@@ -119,7 +119,7 @@ API handler being wrapped
 
 #### Defined in
 
-[route-builder.ts:134](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L134)
+[route-builder.ts:134](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L134)
 
 ***
 
@@ -144,7 +144,7 @@ HTTP method for the handler the middleware is wrapping
 
 #### Defined in
 
-[route-builder.ts:108](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L108)
+[route-builder.ts:108](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L108)
 
 ***
 
@@ -177,7 +177,7 @@ handlers implementing the associated API functionality.
 
 #### Defined in
 
-[route-builder.ts:69](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L69)
+[route-builder.ts:69](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L69)
 
 ***
 
@@ -203,7 +203,7 @@ being built
 
 #### Defined in
 
-[route-builder.ts:98](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L98)
+[route-builder.ts:98](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L98)
 
 ***
 
@@ -229,7 +229,7 @@ the routes
 
 #### Defined in
 
-[route-builder.ts:87](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L87)
+[route-builder.ts:87](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L87)
 
 ***
 
@@ -259,4 +259,4 @@ list of routes this RouteBuilder instance will use
 
 #### Defined in
 
-[route-builder.ts:49](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/route-builder.ts#L49)
+[route-builder.ts:49](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/route-builder.ts#L49)
