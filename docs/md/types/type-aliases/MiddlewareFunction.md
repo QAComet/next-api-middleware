@@ -34,4 +34,4 @@ Describes the shape of middleware functions ingested by this library.
 
 ## Defined in
 
-[types.ts:32](https://github.com/QAComet/next-api-middleware/blob/6739ab5271f3727ce92c719bfebcda9983182dd7/src/types.ts#L32)
+[types.ts:32](https://github.com/QAComet/next-api-middleware/blob/0bd481189c878c6c91f5198b87c801bc07163839/src/types.ts#L32)
