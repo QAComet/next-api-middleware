@@ -56,7 +56,6 @@ describe("RouteMiddleware", () => {
     );
     expect(routeMiddleware.middleware.length).toBe(1);
     const m = routeMiddleware.middleware[0];
-    console.log("m", m);
     expect(m.default).toHaveProperty("include");
     expect(m.default.include).toBe(true);
     expect(m.default).not.toHaveProperty("exclude");

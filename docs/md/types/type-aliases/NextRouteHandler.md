@@ -12,4 +12,4 @@ Represents an app API route handlers for Next.js
 
 ## Defined in
 
-[types.ts:12](https://github.com/QAComet/next-api-middleware/blob/0bd481189c878c6c91f5198b87c801bc07163839/src/types.ts#L12)
+[types.ts:12](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/types.ts#L12)

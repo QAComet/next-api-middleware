@@ -12,4 +12,4 @@ The external facing API ingests either a MiddlewareConfig or a MiddlewareFunctio
 
 ## Defined in
 
-[types.ts:82](https://github.com/QAComet/next-api-middleware/blob/0bd481189c878c6c91f5198b87c801bc07163839/src/types.ts#L82)
+[types.ts:82](https://github.com/QAComet/next-api-middleware/blob/3a5114602cac5b5b5beddb1f0725ccefe957f2a6/src/types.ts#L82)
