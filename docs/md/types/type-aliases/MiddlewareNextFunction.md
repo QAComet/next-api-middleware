@@ -16,4 +16,4 @@ Describes the shape of the next function passed into middleware functions.
 
 ## Defined in
 
-[types.ts:20](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L20)
+[types.ts:29](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/types.ts#L29)

@@ -16,7 +16,7 @@ Configuration format for middleware you input into the library.
 
 #### Defined in
 
-[types.ts:64](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L64)
+[types.ts:73](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/types.ts#L73)
 
 ***
 
@@ -26,7 +26,7 @@ Configuration format for middleware you input into the library.
 
 #### Defined in
 
-[types.ts:63](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L63)
+[types.ts:72](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/types.ts#L72)
 
 ***
 
@@ -36,7 +36,7 @@ Configuration format for middleware you input into the library.
 
 #### Defined in
 
-[types.ts:62](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L62)
+[types.ts:71](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/types.ts#L71)
 
 ***
 
@@ -46,4 +46,4 @@ Configuration format for middleware you input into the library.
 
 #### Defined in
 
-[types.ts:61](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L61)
+[types.ts:70](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/types.ts#L70)

@@ -48,12 +48,13 @@ describe("RouteBuilder", () => {
 
     const routeBuilder = RouteBuilder.from(middleware, routes);
     const { GET } = routeBuilder.build();
+    expect(GET).toBeDefined();
 
     const request = new NextRequest("http://test.example.com/", {
       method: "GET",
     });
 
-    await GET!(request);
+    await GET!(request, { params: Promise.resolve({}) });
 
     expect(middleware[0].middleware).toBeCalled();
     expect(middleware[1].middleware).toBeCalled();
@@ -104,6 +105,7 @@ describe("RouteBuilder", () => {
 
     const routeBuilder = RouteBuilder.from(middleware, routes);
     const { GET } = routeBuilder.build();
+    expect(GET).toBeDefined();
 
     const request = new NextRequest("http://test.example.com/", {
       method: "GET",
@@ -168,12 +170,13 @@ describe("RouteBuilder", () => {
     ];
     const routeBuilder = RouteBuilder.from(middleware, routes);
     const { GET } = routeBuilder.build();
+    expect(GET).toBeDefined();
 
     const request = new NextRequest("http://test.example.com/", {
       method: "GET",
     });
 
-    await GET!(request);
+    await GET!(request, { params: Promise.resolve({}) });
     expect(middleware[0].middleware).toBeCalled();
     expect(middleware[1].middleware).toBeCalled();
     expect(middleware[2].middleware).not.toBeCalled();
@@ -233,12 +236,13 @@ describe("RouteBuilder", () => {
 
     const routeBuilder = RouteBuilder.from(middleware, routes);
     const { GET } = routeBuilder.exclude("MiddlewareB").build();
+    expect(GET).toBeDefined();
 
     const request = new NextRequest("http://test.example.com/", {
       method: "GET",
     });
 
-    await GET!(request);
+    await GET!(request, { params: Promise.resolve({}) });
 
     expect(middleware[0].middleware).toBeCalled();
     expect(MiddlewareB).not.toBeCalled();
@@ -296,12 +300,13 @@ describe("RouteBuilder", () => {
 
     const routeBuilder = RouteBuilder.from(middleware, routes);
     const { GET } = routeBuilder.build();
+    expect(GET).toBeDefined();
 
     const request = new NextRequest("http://test.example.com/", {
       method: "GET",
     });
 
-    await GET!(request);
+    await GET!(request, { params: Promise.resolve({}) });
 
     expect(middleware[0].middleware).toBeCalled();
     expect(MiddlewareB).not.toBeCalled();
@@ -359,12 +364,13 @@ describe("RouteBuilder", () => {
 
     const routeBuilder = RouteBuilder.from(middleware, routes);
     const { GET } = routeBuilder.include("MiddlewareB").build();
+    expect(GET).toBeDefined();
 
     const request = new NextRequest("http://test.example.com/", {
       method: "GET",
     });
 
-    await GET!(request);
+    await GET!(request, { params: Promise.resolve({}) });
 
     expect(middleware[0].middleware).toBeCalled();
     expect(MiddlewareB).toBeCalled();
@@ -424,12 +430,13 @@ describe("RouteBuilder", () => {
 
     const routeBuilder = RouteBuilder.from(middleware, routes);
     const { GET } = routeBuilder.build();
+    expect(GET).toBeDefined();
 
     const request = new NextRequest("http://test.example.com/", {
       method: "GET",
     });
 
-    await GET!(request);
+    await GET!(request, { params: Promise.resolve({}) });
 
     expect(middleware[0].middleware).toBeCalled();
     expect(MiddlewareB).not.toBeCalled();

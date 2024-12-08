@@ -105,7 +105,7 @@ middleware config interface
 
 #### Defined in
 
-[route-middleware.ts:96](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/route-middleware.ts#L96)
+[route-middleware.ts:96](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/route-middleware.ts#L96)
 
 ## Properties
 
@@ -115,7 +115,7 @@ middleware config interface
 
 #### Defined in
 
-[route-middleware.ts:87](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/route-middleware.ts#L87)
+[route-middleware.ts:87](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/route-middleware.ts#L87)
 
 ## Methods
 
@@ -138,7 +138,7 @@ the current list of middleware
 
 #### Defined in
 
-[route-middleware.ts:142](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/route-middleware.ts#L142)
+[route-middleware.ts:142](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/route-middleware.ts#L142)
 
 ***
 
@@ -164,7 +164,7 @@ will wrap
 
 #### Defined in
 
-[route-middleware.ts:155](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/route-middleware.ts#L155)
+[route-middleware.ts:155](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/route-middleware.ts#L155)
 
 ***
 
@@ -190,7 +190,7 @@ objects
 
 #### Defined in
 
-[route-middleware.ts:106](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/route-middleware.ts#L106)
+[route-middleware.ts:106](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/route-middleware.ts#L106)
 
 ***
 
@@ -213,4 +213,4 @@ concatenation.
 
 #### Defined in
 
-[route-middleware.ts:133](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/route-middleware.ts#L133)
+[route-middleware.ts:133](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/route-middleware.ts#L133)

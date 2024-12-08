@@ -4,26 +4,12 @@
 
 [@qacomet/next-api-middleware](../../modules.md) / [types](../README.md) / NextRouteHandler
 
-# Type Alias: NextRouteHandler()
+# Type Alias: NextRouteHandler
 
-> **NextRouteHandler**: (`request`?, `context`?) => `Promise`\<`NextResponse`\>
+> **NextRouteHandler**: (`request`?, `context`?) => `Promise`\<`NextResponse`\> \| (`request`, `context`) => `Promise`\<`NextResponse`\> \| (`request`) => `Promise`\<`NextResponse`\> \| () => `Promise`\<`NextResponse`\>
 
 Represents an app API route handlers for Next.js
 
-## Parameters
-
-### request?
-
-`NextRequest`
-
-### context?
-
-[`NextRouteHandlerContext`](NextRouteHandlerContext.md)
-
-## Returns
-
-`Promise`\<`NextResponse`\>
-
 ## Defined in
 
-[types.ts:12](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L12)
+[types.ts:12](https://github.com/QAComet/next-api-middleware/blob/18b41491bdcc5fd6e62b3d4a669b5da625b229b4/src/types.ts#L12)
