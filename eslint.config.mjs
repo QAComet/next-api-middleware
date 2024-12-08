@@ -7,7 +7,13 @@ export default tseslint.config(
   eslint.configs.recommended,
   tseslint.configs.recommended,
   {
-    ignores: [".husky/", "coverage/", "dist/", "docs/", "eslint.config.mjs"],
-    //files: ["src/**/*.ts"],
+    ignores: [
+      ".husky/",
+      "coverage/",
+      "dist/",
+      "docs/",
+      "examples/",
+      "eslint.config.mjs",
+    ],
   },
 );
