@@ -32,9 +32,17 @@ npm i @qacomet/next-api-middleware
 
 ```ts
 // Located in app/middleware/index.ts
-import { RouteMiddleware, type Middleware } from "@qacomet/next-api-middleware";
+import {
+  RouteMiddleware,
+  type Middleware,
+  type MiddlewareNextFunction,
+} from "@qacomet/next-api-middleware";
 
-const CaptureErrorsMiddleware: Middleware = async (req: NextRequest, next) => {
+const CaptureErrorsMiddleware: Middleware = async (
+  req: NextRequest,
+  res: NextResponse,
+  next: MiddlewareNextFunction
+) => {
   try {
     // Catch any errors that are thrown in remaining
     // middleware and the API route handler
@@ -46,7 +54,11 @@ const CaptureErrorsMiddleware: Middleware = async (req: NextRequest, next) => {
   }
 };
 
-const AddRequestIdMiddleware: Middleware = async (req, res, next) => {
+const AddRequestIdMiddleware: Middleware = async (
+  req: NextRequest,
+  res: NextResponse,
+  next: MiddlewareNextFunction
+) => {
   // Let remaining middleware and API route execute
   const response = await next();
 
