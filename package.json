@@ -2,8 +2,15 @@
   "name": "@qacomet/next-api-middleware",
   "version": "0.0.1",
   "description": "Provides middleware functionality for Next.js app router API routes",
-  "author": "Lucas Simon <lucas@qacomet.com>",
-  "repository": "qacomet/next-api-middleware",
+  "author": "Lucas Simon <lucas@qacomet.com> (https://qacomet.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qacomet/next-api-middleware.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qacomet/next-api-middleware/issues"
+  },
+  "homepage": "https://github.com/qacomet/next-api-middleware#readme",
   "license": "MIT",
   "type": "module",
   "exports": {
