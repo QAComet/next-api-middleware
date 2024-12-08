@@ -9,15 +9,10 @@ export type NextRouteHandlerContext = {
 /**
  * Represents an app API route handlers for Next.js
  */
-export type NextRouteHandler =
-  | ((
-      request: import("next/server").NextRequest,
-      context: NextRouteHandlerContext
-    ) => Promise<import("next/server").NextResponse<unknown>>)
-  | ((
-      request: import("next/server").NextRequest
-    ) => Promise<import("next/server").NextResponse<unknown>>)
-  | (() => Promise<import("next/server").NextResponse<unknown>>);
+export type NextRouteHandler = (
+  request?: import("next/server").NextRequest,
+  context?: NextRouteHandlerContext
+) => Promise<import("next/server").NextResponse<unknown>>;
 
 /**
  * Describes the shape of the next function passed into middleware functions.
