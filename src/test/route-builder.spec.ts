@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { describe, expect, it, vi } from "vitest";
-import { RouteBuilder, type NextRouteHandler } from "../index";
+import {
+  MiddlewareNextFunction,
+  RouteBuilder,
+  type NextRouteHandler,
+} from "../index";
 import { createMiddlewareConfig } from "./utils";
 
 describe("RouteBuilder", () => {
   it("Executes middleware in the correct order", async () => {
     const log = [] as string[];
     const routes = {
-      GET: vi.fn((req, context) => {
+      GET: vi.fn(async () => {
         log.push("GET route");
         return NextResponse.json({ message: "success" });
       }) as unknown as NextRouteHandler,
@@ -15,30 +19,30 @@ describe("RouteBuilder", () => {
     const middleware = [
       createMiddlewareConfig(
         "MiddlewareA",
-        vi.fn(async (req, next) => {
+        vi.fn(async (_req, next) => {
           log.push("start middleware A");
           const resp = await next();
           log.push("end middleware A");
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig(
         "MiddlewareB",
-        vi.fn(async (req, next) => {
+        vi.fn(async (_req, next) => {
           log.push("start middleware B");
           const resp = await next();
           log.push("end middleware B");
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig(
         "MiddlewareC",
-        vi.fn(async (req, next) => {
+        vi.fn(async (_req, next) => {
           log.push("start middleware C");
           const resp = await next();
           log.push("end middleware C");
           return resp;
-        })
+        }),
       ),
     ];
 
@@ -63,41 +67,38 @@ describe("RouteBuilder", () => {
         "end middleware C",
         "end middleware B",
         "end middleware A",
-      ].toString()
+      ].toString(),
     );
   });
 
   it("Correctly sends context between middleware and to the handler being wrapper", async () => {
     const log = [] as string[];
     const routes = {
-      GET: vi.fn((req, context) => {
-        log.push(
-          `GET route - ${context.params.post_id} - ${context.params.comment_id}`
-        );
+      GET: vi.fn(async (_req, context) => {
+        const params = await context.params;
+        log.push(`GET route - ${params.post_id} - ${params.comment_id}`);
         return NextResponse.json({ message: "success" });
       }) as unknown as NextRouteHandler,
     };
     const middleware = [
       createMiddlewareConfig(
         "MiddlewareA",
-        vi.fn(async (req, next, context) => {
-          log.push(
-            `middlewareA - ${context.params.post_id} - ${context.params.comment_id}`
-          );
+        vi.fn(async (_req, next, context) => {
+          const params = await context!.params;
+          log.push(`middlewareA - ${params!.post_id} - ${params!.comment_id}`);
           const resp = await next();
 
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig(
         "MiddlewareB",
         vi.fn(async (req, next, context) => {
-          log.push(
-            `middlewareB - ${context.params.post_id} - ${context.params.comment_id}`
-          );
+          const params = await context!.params;
+          log.push(`middlewareB - ${params!.post_id} - ${params!.comment_id}`);
           const resp = await next();
           return resp;
-        })
+        }),
       ),
     ];
 
@@ -109,29 +110,31 @@ describe("RouteBuilder", () => {
     });
 
     const context = {
-      params: {
+      params: Promise.resolve({
         post_id: "my-test-post",
         comment_id: "my-comment-id",
-      },
+      }),
     };
 
     await GET!(request, context);
 
     expect(middleware[0].middleware).toBeCalled();
     expect(middleware[1].middleware).toBeCalled();
+
+    const params = await context.params;
     expect(log.toString()).toBe(
       [
-        `middlewareA - ${context.params.post_id} - ${context.params.comment_id}`,
-        `middlewareB - ${context.params.post_id} - ${context.params.comment_id}`,
-        `GET route - ${context.params.post_id} - ${context.params.comment_id}`,
-      ].toString()
+        `middlewareA - ${params.post_id} - ${params.comment_id}`,
+        `middlewareB - ${params.post_id} - ${params.comment_id}`,
+        `GET route - ${params.post_id} - ${params.comment_id}`,
+      ].toString(),
     );
   });
 
   it("Short circuits the middleware chain if an earlier piece of middleware returns a response", async () => {
     const log: string[] = [];
     const routes = {
-      GET: vi.fn((req, context) => {
+      GET: vi.fn(async () => {
         log.push("GET route");
         return NextResponse.json({ message: "success" });
       }) as unknown as NextRouteHandler,
@@ -144,14 +147,14 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware A");
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig(
         "MiddlewareB",
-        vi.fn(async (req, next) => {
+        vi.fn(async () => {
           log.push("start middleware B");
           return NextResponse.json({ hello: "world" });
-        })
+        }),
       ),
       createMiddlewareConfig(
         "MiddlewareC",
@@ -160,7 +163,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware C");
           return resp;
-        })
+        }),
       ),
     ];
     const routeBuilder = RouteBuilder.from(middleware, routes);
@@ -179,25 +182,27 @@ describe("RouteBuilder", () => {
         "start middleware A",
         "start middleware B",
         "end middleware A",
-      ].toString()
+      ].toString(),
     );
   });
 
   it("Excludes a middleware configured to be included but added to the exclude list", async () => {
     const log: string[] = [];
     const routes = {
-      GET: vi.fn((req, context) => {
+      GET: vi.fn(async () => {
         log.push("GET route");
         return NextResponse.json({ message: "success" });
       }) as unknown as NextRouteHandler,
     };
 
-    const MiddlewareB = vi.fn(async (req, next) => {
-      log.push("start middleware B");
-      const resp = await next();
-      log.push("end middleware B");
-      return resp;
-    });
+    const MiddlewareB = vi.fn(
+      async (req: NextRequest, next: MiddlewareNextFunction) => {
+        log.push("start middleware B");
+        const resp = await next();
+        log.push("end middleware B");
+        return resp;
+      },
+    );
 
     const middleware = [
       createMiddlewareConfig(
@@ -207,13 +212,13 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware A");
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig(
         "MiddlewareB",
-        async function (req: any, next: any) {
+        async function (req: NextRequest, next: MiddlewareNextFunction) {
           return await MiddlewareB(req, next);
-        }
+        },
       ),
       createMiddlewareConfig(
         "MiddlewareC",
@@ -222,7 +227,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware C");
           return resp;
-        })
+        }),
       ),
     ];
 
@@ -245,14 +250,14 @@ describe("RouteBuilder", () => {
         "GET route",
         "end middleware C",
         "end middleware A",
-      ].toString()
+      ].toString(),
     );
   });
 
   it("Excludes a middleware configured to be excluded", async () => {
     const log = [] as string[];
     const routes = {
-      GET: vi.fn((req, context) => {
+      GET: vi.fn(async () => {
         log.push("GET route");
         return NextResponse.json({ message: "success" });
       }) as unknown as NextRouteHandler,
@@ -271,7 +276,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware A");
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig("MiddlewareB", async function (req, next) {
         return await MiddlewareB(req, next);
@@ -283,7 +288,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware C");
           return resp;
-        })
+        }),
       ),
     ];
 
@@ -308,14 +313,14 @@ describe("RouteBuilder", () => {
         "GET route",
         "end middleware C",
         "end middleware A",
-      ].toString()
+      ].toString(),
     );
   });
 
   it("Includes a middleware configured to be excluded but set on the builder's include list", async () => {
     const log = [] as string[];
     const routes = {
-      GET: vi.fn((req, context) => {
+      GET: vi.fn(async () => {
         log.push("GET route");
         return NextResponse.json({ message: "success" });
       }) as unknown as NextRouteHandler,
@@ -334,7 +339,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware A");
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig("MiddlewareB", async function (req, next) {
         return await MiddlewareB(req, next);
@@ -346,7 +351,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware C");
           return resp;
-        })
+        }),
       ),
     ];
 
@@ -373,14 +378,14 @@ describe("RouteBuilder", () => {
         "end middleware C",
         "end middleware B",
         "end middleware A",
-      ].toString()
+      ].toString(),
     );
   });
 
   it("Middleware not configured for a specific HTTP method should not be called", async () => {
     const log = [] as string[];
     const routes = {
-      GET: vi.fn((req, context) => {
+      GET: vi.fn(async () => {
         log.push("GET route");
         return NextResponse.json({ message: "success" });
       }) as unknown as NextRouteHandler,
@@ -399,7 +404,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware A");
           return resp;
-        })
+        }),
       ),
       createMiddlewareConfig("MiddlewareB", async function (req, next) {
         return await MiddlewareB(req, next);
@@ -411,7 +416,7 @@ describe("RouteBuilder", () => {
           const resp = await next();
           log.push("end middleware C");
           return resp;
-        })
+        }),
       ),
     ];
 
@@ -436,7 +441,7 @@ describe("RouteBuilder", () => {
         "GET route",
         "end middleware C",
         "end middleware A",
-      ].toString()
+      ].toString(),
     );
   });
 });

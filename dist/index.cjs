@@ -186,7 +186,7 @@ var RouteMiddleware = class {
           methods: DEFAULT_HTTP_METHODS
         };
       } else {
-        let methods = Array.from(new Set(m.methods));
+        const methods = Array.from(new Set(m.methods));
         m.name = m.name || m.middleware.name;
         m.methods = methods.length > 0 ? methods : DEFAULT_HTTP_METHODS;
         m.default = m.default || {
@@ -221,10 +221,10 @@ var RouteMiddleware = class {
   * will wrap
   */
   routes(routes) {
-    if (routes.hasOwnProperty("prototype")) {
+    if (Object.prototype.hasOwnProperty.call(routes, "prototype")) {
       const routeHandlersInstance = new routes();
       const routeHandlers = {};
-      for (let method of DEFAULT_HTTP_METHODS) {
+      for (const method of DEFAULT_HTTP_METHODS) {
         if (routeHandlersInstance[method]) {
           routeHandlers[method] = routeHandlersInstance[method];
         }

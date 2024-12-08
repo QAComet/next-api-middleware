@@ -1,22 +1,35 @@
-import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
-import { RouteMiddleware, type Middleware } from "../index";
+import {
+  RouteMiddleware,
+  type Middleware,
+  type MiddlewareNextFunction,
+} from "../index";
 import { DEFAULT_HTTP_METHODS } from "../constants";
 
 describe("RouteMiddleware", () => {
   it("Should be able to merge multiple RouteMiddleware instances together.", async () => {
-    async function MiddlewareA(req: any, next: any) {
-      return NextResponse.json({ message: "success" });
+    async function MiddlewareA(
+      _req: NextRequest,
+      next: MiddlewareNextFunction,
+    ) {
+      return await next();
     }
-    async function MiddlewareB(req: any, next: any) {
-      return NextResponse.json({ message: "success" });
+    async function MiddlewareB(
+      _req: NextRequest,
+      next: MiddlewareNextFunction,
+    ) {
+      return await next();
     }
-    async function MiddlewareC(req: any, next: any) {
-      return NextResponse.json({ message: "success" });
+    async function MiddlewareC(
+      _req: NextRequest,
+      next: MiddlewareNextFunction,
+    ) {
+      return await next();
     }
     const routerA = RouteMiddleware.from(
       MiddlewareA as Middleware,
-      MiddlewareB as Middleware
+      MiddlewareB as Middleware,
     );
     const routerB = RouteMiddleware.from(MiddlewareC as Middleware);
     const routerC = RouteMiddleware.merge(routerA, routerB);
@@ -35,8 +48,11 @@ describe("RouteMiddleware", () => {
 
   it("Should not override configured HTTP methods", async () => {
     const MiddlewareA = {
-      middleware: async function MiddlewareA(req: any, next: any) {
-        return NextResponse.json({ message: "success" });
+      middleware: async function MiddlewareA(
+        _req: NextRequest,
+        next: MiddlewareNextFunction,
+      ) {
+        return await next(); // NextResponse.json({ message: "success" });
       },
       methods: ["GET"],
     };
@@ -47,12 +63,15 @@ describe("RouteMiddleware", () => {
 
   it("Should add default functionality to middleware configs", async () => {
     const MiddlewareConfig = {
-      middleware: async function MiddlewareA(req: any, next: any) {
-        return NextResponse.json({ message: "success" });
+      middleware: async function MiddlewareA(
+        _req: NextRequest,
+        next: MiddlewareNextFunction,
+      ) {
+        return await next();
       },
     };
     const routeMiddleware = RouteMiddleware.from(
-      MiddlewareConfig as Middleware
+      MiddlewareConfig as Middleware,
     );
     expect(routeMiddleware.middleware.length).toBe(1);
     const m = routeMiddleware.middleware[0];

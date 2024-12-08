@@ -115,7 +115,7 @@ export class RouteMiddleware {
           methods: DEFAULT_HTTP_METHODS,
         } as BuilderMiddlewareConfig;
       } else {
-        let methods = Array.from(new Set(m.methods));
+        const methods = Array.from(new Set(m.methods));
         m.name = m.name || m.middleware.name;
         m.methods = methods.length > 0 ? methods : DEFAULT_HTTP_METHODS;
         m.default = m.default || { include: true };
@@ -141,7 +141,7 @@ export class RouteMiddleware {
    */
   merge(...routeMiddleware: RouteMiddleware[]) {
     this.middleware = this.middleware.concat(
-      ...routeMiddleware.map((m) => m.middleware)
+      ...routeMiddleware.map((m) => m.middleware),
     );
     return this;
   }
@@ -154,10 +154,10 @@ export class RouteMiddleware {
    */
   routes(routes: NextRouteHandlers | NextRouteHandlersClass) {
     // for if a class is used
-    if (routes.hasOwnProperty("prototype")) {
+    if (Object.prototype.hasOwnProperty.call(routes, "prototype")) {
       const routeHandlersInstance = new (routes as NextRouteHandlersClass)();
       const routeHandlers = {} as NextRouteHandlers;
-      for (let method of DEFAULT_HTTP_METHODS) {
+      for (const method of DEFAULT_HTTP_METHODS) {
         if (routeHandlersInstance[method]) {
           routeHandlers[method] = routeHandlersInstance[method];
         }

@@ -16,7 +16,7 @@ Interface defining the routes input into the middleware
 
 #### Defined in
 
-[types.ts:98](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/types.ts#L98)
+[types.ts:93](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L93)
 
 ***
 
@@ -26,7 +26,7 @@ Interface defining the routes input into the middleware
 
 #### Defined in
 
-[types.ts:94](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/types.ts#L94)
+[types.ts:89](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L89)
 
 ***
 
@@ -36,7 +36,7 @@ Interface defining the routes input into the middleware
 
 #### Defined in
 
-[types.ts:99](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/types.ts#L99)
+[types.ts:94](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L94)
 
 ***
 
@@ -46,7 +46,7 @@ Interface defining the routes input into the middleware
 
 #### Defined in
 
-[types.ts:100](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/types.ts#L100)
+[types.ts:95](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L95)
 
 ***
 
@@ -56,7 +56,7 @@ Interface defining the routes input into the middleware
 
 #### Defined in
 
-[types.ts:96](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/types.ts#L96)
+[types.ts:91](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L91)
 
 ***
 
@@ -66,7 +66,7 @@ Interface defining the routes input into the middleware
 
 #### Defined in
 
-[types.ts:97](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/types.ts#L97)
+[types.ts:92](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L92)
 
 ***
 
@@ -76,4 +76,4 @@ Interface defining the routes input into the middleware
 
 #### Defined in
 
-[types.ts:95](https://github.com/QAComet/next-api-middleware/blob/1c65ba86d75ce5f9f421c416d51a423d428d8e19/src/types.ts#L95)
+[types.ts:90](https://github.com/QAComet/next-api-middleware/blob/da24335f9b3ecf3283f97097a7779844efa72961/src/types.ts#L90)

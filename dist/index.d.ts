@@ -10,7 +10,7 @@ type NextRouteHandlerContext = {
 /**
  * Represents an app API route handlers for Next.js
  */
-type NextRouteHandler = ((request: next_server.NextRequest, context: NextRouteHandlerContext) => Promise<next_server.NextResponse<unknown>>) | ((request: next_server.NextRequest) => Promise<next_server.NextResponse<unknown>>) | (() => Promise<next_server.NextResponse<unknown>>);
+type NextRouteHandler = (request?: next_server.NextRequest, context?: NextRouteHandlerContext) => Promise<next_server.NextResponse<unknown>>;
 /**
  * Describes the shape of the next function passed into middleware functions.
  */
